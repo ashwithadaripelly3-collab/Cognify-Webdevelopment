@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cognifyz Task 2 - JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            padding: 40px;
+            transition: background-color 0.5s;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        button {
+            padding: 12px 24px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        input {
+            padding: 10px;
+            margin: 5px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2196F3;
+        }
+    </style>
+</head>
+<body id="mainBody">
+    <div class="container">
+        <h1>Level 1 - Task 2: JavaScript Basics</h1>
+
+        <!-- Task 1: Color Changing Button -->
+        <div class="section">
+            <h3>1. Color Changing Button</h3>
+            <p>Click the button to change background color:</p>
+            <button onclick="changeColor()">Change Background Color</button>
+        </div>
+
+        <!-- Task 2: Greeting Alert -->
+        <div class="section">
+            <h3>2. Time-Based Greeting</h3>
+            <p>Click to get a greeting based on current time:</p>
+            <button onclick="showGreeting()">Show Greeting</button>
+        </div>
+
+        <!-- Task 3: Basic Calculator -->
+        <div class="section">
+            <h3>3. Basic Calculator - Add Two Numbers</h3>
+            <input type="number" id="num1" placeholder="Enter first number">
+            <input type="number" id="num2" placeholder="Enter second number">
+            <br>
+            <button onclick="calculateSum()">Add Numbers</button>
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script>
+        // Task 1: Change Background Color
+        function changeColor() {
+            const colors = ['#ffadad', '#ffd6a5', '#fdffb6', '#caffbf', '#9bf6ff', '#a0c4ff', '#bdb2ff', '#ffc6ff'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.getElementById('mainBody').style.backgroundColor = randomColor;
+        }
+
+        // Task 2: Time-Based Greeting Alert
+        function showGreeting() {
+            const hour = new Date().getHours();
+            let greeting;
+            
+            if (hour < 12) {
+                greeting = "Good Morning! ☀️";
+            } else if (hour < 17) {
+                greeting = "Good Afternoon! 🌤️";
+            } else {
+                greeting = "Good Evening! 🌙";
+            }
+            alert(greeting);
+        }
+
+        // Task 3: Basic Calculator
+        function calculateSum() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById('result').innerHTML = "Please enter both numbers!";
+                document.getElementById('result').style.color = "red";
+            } else {
+                const sum = num1 + num2;
+                document.getElementById('result').innerHTML = `Result: ${num1} + ${num2} = ${sum}`;
+                document.getElementById('result').style.color = "#2196F3";
+            }
+        }
+    </script>
+</body>
+</html>
